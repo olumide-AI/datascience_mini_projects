@@ -1,20 +1,32 @@
 #Method is a function associated with a class 
 # Class is a blueprint for creating instances
 class Employee:
+    #Creating a class variable so it can be accessed in any method 
+    raise_amount = 1.04
+    # class variable to keep track of employee, this shouldn't be easily manipulated
+    num_of_emps = 0
     #intializer / constructor
     # self lets us work with all instance e.g 
     # self will pass emp_1 to all class variable
-    def __init__ (self, firstname, last, pay):
+    #init method runs anything we create a new instance 
+    def __init__ (self, first, last, pay):
         #set instance variables 
-        self.first = firstname
-        self.lastname = last
+        self.first = first
+        self.last = last
         self.pay = pay
-        self.email = firstname + "." + last + "@company.com"
+        self.email = first + "." + last + "@company.com"
+
+        Employee.num_of_emps += 1
     
     #Each method in a class, automatically takes the instance as the 1st arg
     # Don't forget self in method declaration/parameter
     def fullname(self):
         return "{} {}".format(self.first, self.last)
+    
+    #A method on applying pay raise 
+    def apply_raise(self):
+        #You can access class variable using Employee.raise_amount too
+        self.pay = int(self.pay * self.raise_amount)
 
 # Unique instances of employee class 
 # each instance is a unique employee obj and have diff locations in memory
