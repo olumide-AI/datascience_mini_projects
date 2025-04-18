@@ -30,7 +30,7 @@ class Drone:
 # --- Test run ---
 drone = Drone()
 steps = 10
-for _ in range(steps):
+for i in range(steps):
     drone.move()
 
 print(f"After {steps} steps, drone is {drone.get_distance():.2f} units from start.")
